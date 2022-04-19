@@ -23,11 +23,7 @@ java -jar MavenRepoPublisher-1.0-SNAPSHOT-all.jar org/grails/grails-datastore-go
 ```
 
 ## 实现逻辑
-```mermaid
-flowchart TD
-    start((Start)) --> gitpull[git pull]
-    gitpull --> copyM2Lib[Copy directory in .m2 to git repo]
-    copyM2Lib --> gitCommit[git commit]
-    gitCommit --> gitPush[git push]
-    gitPush --> End((End))
-```
+1. 用git pull来更新本地maven库
+2. 把.m2目录下的本地库复制到本地maven项目目录下 
+3. git commit
+4. git push
