@@ -3,7 +3,7 @@ import org.apache.commons.io.FileUtils
 
 class Publish {
     /**
-     * Publish local maven repository to gitee
+     * Publish local maven repository to git repo
      * for example:
      * Publish org/grails/grails-datastore-gorm-mongodb ../maven
      * @param args

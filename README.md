@@ -13,8 +13,21 @@
 ```shell
 java -jar MavenRepoPublisher-1.0-SNAPSHOT-all.jar [local maven repository directory] [maven repo]
 ```
+参数说明：
+* [local maven repository directory] ：本地仓库目录 
+* [maven repo] ： 本地git maven 目录
 
+例如：
+```shell
+java -jar MavenRepoPublisher-1.0-SNAPSHOT-all.jar org/grails/grails-datastore-gorm-mongodb ../maven
+```
+
+## 实现逻辑
 ```mermaid
 flowchart TD
-    Start --> Stop
+    start((Start)) --> gitpull[git pull]
+    gitpull --> copyM2Lib[Copy directory in .m2 to git repo]
+    copyM2Lib --> gitCommit[git commit]
+    gitCommit --> gitPush[git push]
+    gitPush --> End((End))
 ```
