@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://maven.aliyun.com/repository/public" }
+    }
+}
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'com.enxinsoft'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    maven { url "https://maven.aliyun.com/repository/public" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation 'commons-io:commons-io:2.4'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+//    getDestinationDirectory().set(new File("./runtime"))
+    manifest {
+        attributes 'Main-Class': 'Publish'
+    }
+}
